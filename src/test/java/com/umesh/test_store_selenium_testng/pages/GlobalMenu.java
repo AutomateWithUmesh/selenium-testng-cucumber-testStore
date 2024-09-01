@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+
 /**
  * Page Object Model class representing the Global Menu of the application.
  * Provides methods to interact with the menu options and search functionality.
@@ -21,7 +22,6 @@ public class GlobalMenu extends BasePage {
 
     // WebDriver instance for interacting with the browser.
     private WebDriver driver;
-
     // Page objects for the subpages accessible from the Global Menu.
     private ClothesPage clothesPage;
     private AccessoriesPage accessoriesPage;

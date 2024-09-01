@@ -24,4 +24,6 @@ public class Constants {
     // Key for the test store URL
     public static final String TEST_STORE_URL = "test.store.url"; // Key for the URL of the test store application
 
+    //key for credential file path
+    public static final String CREDENTIALS_FILE_PATH = "credentialsFilePath";
 }

@@ -1,4 +1,4 @@
-package com.umesh.test_store_selenium_testng.tests.model;
+package com.umesh.test_store_selenium_testng.dataModel;
 
 /**
  * Represents user credentials consisting of an email and a password.

@@ -1,4 +1,4 @@
-package com.umesh.test_store_selenium_testng.tests;
+package com.umesh.test_store_selenium_testng.factory;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.net.MalformedURLException;
