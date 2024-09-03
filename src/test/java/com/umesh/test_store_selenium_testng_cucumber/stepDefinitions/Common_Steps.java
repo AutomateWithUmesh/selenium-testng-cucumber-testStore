@@ -1,5 +1,9 @@
 package com.umesh.test_store_selenium_testng.stepDefinitions;
 
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
+import com.aventstack.extentreports.markuputils.ExtentColor;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.umesh.test_store_selenium_testng.context.TestContext;
 import com.umesh.test_store_selenium_testng.dataModel.Credentials;
 import com.umesh.test_store_selenium_testng.pages.GlobalHeader;
@@ -9,6 +13,8 @@ import com.umesh.test_store_selenium_testng.pages.PageFactoryManager;
 import com.umesh.test_store_selenium_testng.util.Config;
 import com.umesh.test_store_selenium_testng.util.Constants;
 import com.umesh.test_store_selenium_testng.util.JsonUtil;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -27,7 +33,7 @@ public class Common_Steps {
     //private final GlobalMenu globalMenu;
     private final Credentials credentials;
     private final GlobalHeader globalHeader;
-    private  boolean isLoginSuccessful = false; // Flag to track if login was successful
+    private static boolean isLoginSuccessful = false; // Flag to track if login was successful
 
     public Common_Steps(TestContext context) {
         this.context = context;
@@ -36,6 +42,7 @@ public class Common_Steps {
         credentials = JsonUtil.getTestData(Config.get(Constants.CREDENTIALS_FILE_PATH), Credentials.class);
         globalHeader = PageFactoryManager.getGlobalHeader(context.driver);
     }
+
 
     @Given("the user is on Test Store Home Page")
     public void the_user_is_on_test_store_home_page() {
@@ -57,6 +64,7 @@ public class Common_Steps {
             log.info("Sign out completed");
             context.driver.manage().deleteAllCookies(); // Clear cookies
             log.info("Cookies deleted");
+                    ExtentCucumberAdapter.getCurrentStep().log(Status.INFO, MarkupHelper.createLabel("signout", ExtentColor.GREY));
         } else {
             log.info("Skipping the sign out as login failed");
             throw new SkipException("Skipping the sign out as login failed"); // Skip sign out if login failed

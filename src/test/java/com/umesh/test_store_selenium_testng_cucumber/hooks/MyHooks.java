@@ -8,6 +8,8 @@ package com.umesh.test_store_selenium_testng.hooks;
  */
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
 import com.umesh.test_store_selenium_testng.context.TestContext;
 import com.umesh.test_store_selenium_testng.factory.DriverFactory;
@@ -18,6 +20,7 @@ import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import com.umesh.test_store_selenium_testng.stepDefinitions.Common_Steps;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -35,6 +38,7 @@ public class MyHooks {
     protected WebDriver driver; // WebDriver instance for browser interactions
     private ExtentReports extentReports;
     private ExtentTest extentTest;
+    private Common_Steps common_steps;
 
     public MyHooks(TestContext context) {
         this.context = context;
@@ -52,26 +56,22 @@ public class MyHooks {
     public void setupDriver() throws MalformedURLException {
         driver = DriverFactory.getDriver(); // Initialize the WebDriver
         context.driver = driver;
+        //common_steps = new Common_Steps(this.context);
     }
-     
-    @After(order = 0)
+
+    @After(order = 1)
     public void quitDriver(Scenario scenario) {
-//        if(scenario.isFailed()) {
-//            File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-//            String screenshotName = "screenshot_" + System.currentTimeMillis() + ".png";
-//            try {
-//                Files.copy(screenshot.toPath(), Paths.get("test-output/screenshots", screenshotName));
-//                scenario.attach(Files.readAllBytes(screenshot.toPath()), "image/png", screenshotName);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-        if (scenario.isFailed()) {
-            final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-            scenario.attach(screenshot, "image/png", "Failure Screenshot");
+        if(scenario.isFailed())
+        {
+            ExtentCucumberAdapter.getCurrentStep().log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromBase64String(getBase64Screenshot()).build());
         }
         if (driver != null) {
             DriverFactory.quitDriver(); // Quit the WebDriver
         }
+    }
+
+    public String getBase64Screenshot()
+    {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
     }
 }
