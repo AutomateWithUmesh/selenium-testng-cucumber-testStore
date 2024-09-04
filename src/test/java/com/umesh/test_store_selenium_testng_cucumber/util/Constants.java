@@ -1,4 +1,4 @@
-package com.umesh.test_store_selenium_testng.util;
+package com.umesh.test_store_selenium_testng_cucumber.util;
 
 /**
  * Constants class holds configuration keys and constant values used throughout the project.

@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Test Store Suite" >
+    <test name="test-store" >
+        <classes>
+            <class name="com.umesh.test_store_selenium_testng_cucumber.runner.MenClothesTests" />
+            <class name="com.umesh.test_store_selenium_testng_cucumber.runner.SearchBoxTests" />
+        </classes>
+    </test>
+</suite>

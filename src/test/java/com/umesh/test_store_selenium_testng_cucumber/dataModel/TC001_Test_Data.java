@@ -1,4 +1,4 @@
-package com.umesh.test_store_selenium_testng.dataModel;
+package com.umesh.test_store_selenium_testng_cucumber.dataModel;
 
 /**
  * Represents test data for test case TC001.

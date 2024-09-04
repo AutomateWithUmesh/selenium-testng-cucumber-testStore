@@ -1,4 +1,4 @@
-package com.umesh.test_store_selenium_testng.util;
+package com.umesh.test_store_selenium_testng_cucumber.util;
 
 import java.io.InputStream;
 import java.util.Properties;

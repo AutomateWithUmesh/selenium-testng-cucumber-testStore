@@ -1,10 +1,10 @@
-package com.umesh.test_store_selenium_testng.stepDefinitions;
+package com.umesh.test_store_selenium_testng_cucumber.stepDefinitions;
 
-import com.umesh.test_store_selenium_testng.context.TestContext;
-import com.umesh.test_store_selenium_testng.pages.ClothesMenPage;
-import com.umesh.test_store_selenium_testng.pages.ClothesPage;
-import com.umesh.test_store_selenium_testng.pages.GlobalMenu;
-import com.umesh.test_store_selenium_testng.pages.PageFactoryManager;
+import com.umesh.test_store_selenium_testng_cucumber.context.TestContext;
+import com.umesh.test_store_selenium_testng_cucumber.pages.ClothesMenPage;
+import com.umesh.test_store_selenium_testng_cucumber.pages.ClothesPage;
+import com.umesh.test_store_selenium_testng_cucumber.pages.GlobalMenu;
+import com.umesh.test_store_selenium_testng_cucumber.pages.PageFactoryManager;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

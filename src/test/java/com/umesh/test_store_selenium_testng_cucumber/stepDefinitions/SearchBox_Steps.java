@@ -1,20 +1,14 @@
-package com.umesh.test_store_selenium_testng.stepDefinitions;
+package com.umesh.test_store_selenium_testng_cucumber.stepDefinitions;
 
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
-import com.umesh.test_store_selenium_testng.context.TestContext;
-import com.umesh.test_store_selenium_testng.pages.GlobalMenu;
-import com.umesh.test_store_selenium_testng.pages.HomePage;
-import com.umesh.test_store_selenium_testng.pages.LoginPage;
-import com.umesh.test_store_selenium_testng.pages.PageFactoryManager;
-import com.umesh.test_store_selenium_testng.dataModel.Credentials;
-import com.umesh.test_store_selenium_testng.dataModel.TC001_Test_Data;
-import com.umesh.test_store_selenium_testng.util.Config;
-import com.umesh.test_store_selenium_testng.util.Constants;
-import com.umesh.test_store_selenium_testng.util.JsonUtil;
-import io.cucumber.java.en.Given;
+import com.umesh.test_store_selenium_testng_cucumber.context.TestContext;
+import com.umesh.test_store_selenium_testng_cucumber.pages.GlobalMenu;
+import com.umesh.test_store_selenium_testng_cucumber.pages.PageFactoryManager;
+import com.umesh.test_store_selenium_testng_cucumber.dataModel.TC001_Test_Data;
+import com.umesh.test_store_selenium_testng_cucumber.util.JsonUtil;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.slf4j.Logger;

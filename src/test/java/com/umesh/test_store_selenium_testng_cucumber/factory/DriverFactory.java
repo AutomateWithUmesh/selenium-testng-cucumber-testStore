@@ -1,4 +1,4 @@
-package com.umesh.test_store_selenium_testng.factory;
+package com.umesh.test_store_selenium_testng_cucumber.factory;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.net.MalformedURLException;
@@ -10,8 +10,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import com.umesh.test_store_selenium_testng.util.Config;
-import com.umesh.test_store_selenium_testng.util.Constants;
+import com.umesh.test_store_selenium_testng_cucumber.util.Config;
+import com.umesh.test_store_selenium_testng_cucumber.util.Constants;
 
 /**
  * DriverFactory provides methods to initialize and manage WebDriver instances.

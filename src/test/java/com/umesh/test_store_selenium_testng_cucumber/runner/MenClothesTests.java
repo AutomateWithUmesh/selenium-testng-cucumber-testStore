@@ -36,15 +36,10 @@ package com.umesh.test_store_selenium_testng_cucumber.runner;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.BeforeClass;
-
-import java.io.File;
-import java.io.FileNotFoundException;
 
 @CucumberOptions(
-        features = { "src/test/resources/features" },
+//        features = { "src/test/resources/features/MenClothes.feature" },
+        features = { "classpath:features/MenClothes.feature" },
         glue = {"com.umesh.test_store_selenium_testng_cucumber"},
         plugin = {
                 "pretty",
@@ -53,5 +48,5 @@ import java.io.FileNotFoundException;
         },
         monochrome = true
 )
-public class MyTestNGRunnerTest extends AbstractTestNGCucumberTests {
+public class MenClothesTests extends AbstractTestNGCucumberTests {
 }

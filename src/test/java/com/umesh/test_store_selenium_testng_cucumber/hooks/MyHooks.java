@@ -1,4 +1,4 @@
-package com.umesh.test_store_selenium_testng.hooks;
+package com.umesh.test_store_selenium_testng_cucumber.hooks;
 
 /**
  * BaseTest provides a common setup and teardown framework for test cases.
@@ -11,16 +11,13 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
-import com.umesh.test_store_selenium_testng.context.TestContext;
-import com.umesh.test_store_selenium_testng.factory.DriverFactory;
+import com.umesh.test_store_selenium_testng_cucumber.context.TestContext;
+import com.umesh.test_store_selenium_testng_cucumber.factory.DriverFactory;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.MalformedURLException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
-import com.umesh.test_store_selenium_testng.stepDefinitions.Common_Steps;
+import com.umesh.test_store_selenium_testng_cucumber.stepDefinitions.Common_Steps;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -29,7 +26,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.umesh.test_store_selenium_testng.util.Config;
+import com.umesh.test_store_selenium_testng_cucumber.util.Config;
 
 public class MyHooks {
 

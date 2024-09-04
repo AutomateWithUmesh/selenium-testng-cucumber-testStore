@@ -1,4 +1,4 @@
-package com.umesh.test_store_selenium_testng.pages;
+package com.umesh.test_store_selenium_testng_cucumber.pages;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;

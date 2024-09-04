@@ -17,6 +17,7 @@
         <maven.jar.version>3.3.0</maven.jar.version>
         <maven.surefire.version>3.1.2</maven.surefire.version>
         <maven.resources.plugin>3.3.1</maven.resources.plugin>
+        <thread.count>1</thread.count>
         <!-- output directory -->
         <package.directory>${project.build.directory}/docker-resources</package.directory>
     </properties>
@@ -69,6 +70,7 @@
             <artifactId>cucumber-testng</artifactId>
             <version>7.18.1</version>
         </dependency>
+
         <!-- Needed to support passing arguments to constructor -->
         <dependency>
             <groupId>io.cucumber</groupId>
@@ -82,7 +84,7 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>selenium-docker</finalName>
+        <finalName>selenium-cucumber-docker</finalName>
         <plugins>
             <!-- To compile the source code using specific java version. also to force IDE to change the settings -->
             <plugin>
@@ -93,19 +95,23 @@
                     <release>17</release>
                 </configuration>
             </plugin>
-            <!-- To run the tests using specific parameters, change thread count, testng report output directory etc -->
+            <!-- To run the tests using mvn clean test -Dbrowser=firefox -thread.count=1 if we want to run scenarios sequentially. Given value 2 if we want 2 scenarios to run in parallel -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven.surefire.version}</version>
                 <configuration>
-                    <includes>
-                        <include>**/MyTestNGRunnerTest.java</include>
-                    </includes>
+                    <systemPropertyVariables>
+                        <browser>firefox</browser>
+                        <selenium.grid.enabled>false</selenium.grid.enabled>
+                    </systemPropertyVariables>
+                    <suiteXmlFiles>
+                        <file>src/test/resources/test-suites/test-store.xml</file>
+                    </suiteXmlFiles>
+                    <threadCount>1</threadCount>
                     <reportsDirectory>target/test-output</reportsDirectory>
                 </configuration>
             </plugin>
-            <!-- To copy all the dependencies to run our tests as part of "mvn package" -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -119,29 +125,55 @@
                         </goals>
                         <configuration>
                             <outputDirectory>
-                                ${package.directory}/libs
+                                ${package.directory}
                             </outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-            <!-- To package our page objects, test classes into jar -->
+<!--               <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-jar-plugin</artifactId>-->
+<!--                <version>${maven.jar.version}</version>-->
+<!--                <configuration>-->
+<!--                    <archive>-->
+<!--                        <manifestFile>src/test/resources/META-INF/MANIFEST.MF</manifestFile>-->
+<!--                    </archive>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <goals>-->
+<!--                            <goal>test-jar</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>${maven.jar.version}</version>
                 <configuration>
-                    <outputDirectory>${package.directory}/libs</outputDirectory>
+                    <outputDirectory>${package.directory}</outputDirectory>
+                    <archive>
+                        <manifestFile>src/test/resources/META-INF/MANIFEST.MF</manifestFile>
+                    </archive>
                 </configuration>
                 <executions>
                     <execution>
+                        <id>default-jar</id>
+                        <phase>package</phase>
                         <goals>
-                            <!-- by default maven will only considers src/main/java and src/main/resource-->
-                            <!-- by default maven will not include src/test/java test classes, hence below goal to include test classes-->
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>default-test-jar</id>
+                        <phase>package</phase>
+                        <goals>
                             <goal>test-jar</goal>
                         </goals>
                         <configuration>
-                            <includes>**/*.class</includes>
+                            <outputDirectory>${package.directory}</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
@@ -171,5 +203,4 @@
             </plugin>
         </plugins>
     </build>
-    <name>test_store_selenium_testng_cucumber</name>
 </project>

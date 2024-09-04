@@ -1,4 +1,4 @@
-package com.umesh.test_store_selenium_testng.util;
+package com.umesh.test_store_selenium_testng_cucumber.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.InputStream;
