@@ -43,5 +43,6 @@ public class MenClothes_Steps {
     @Then("mens cloth page should be displayed")
     public void mensClothPageShouldBeDisplayed() {
         Assert.assertTrue(clothesMenPage.isDisplayed(), "men clothes page is not displayed");
+        clothesMenPage.selectMenClothes();
     }
 }
